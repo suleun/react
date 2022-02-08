@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
 function App() {
+
+const[text, setText] = useState('Hello');
 
 const onSubmit = () =>{
   alert('submitted');
@@ -12,6 +14,10 @@ const onKeyUp = (event) => {
   }
 }
 
+const updateText = () => {
+  setText('Bye');
+}
+
   return (
     <div className="App">
     <input onKeyUp={onKeyUp}>
@@ -20,6 +26,16 @@ const onKeyUp = (event) => {
      <button onClick={onSubmit}>
        submit
      </button>
+
+     <br/>
+     <br/>
+
+     <span>{text}</span>
+
+     <button onClick={updateText}>
+       update
+     </button>
+
     </div>
   );
 }
