@@ -1,40 +1,29 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 function App() {
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onSubmit = () =>{
-    alert('submitted');
+  const [count, setCount] = useState(0);
+  const [count1, setCount1] = useState(0);
+  
+  useEffect(()=>{
+    console.log(count);
+  }, [count, count1]) // count 인자를 지정함으로써 원하는 status 볼 수 있음
+  
+  const increment = () => {
+    setCount(count + 1);
   }
+
+
+  useEffect(()=>{
+    console.log('first rendering');
+  }, [])
+
+
 
   return (
     <div className="App">
-    <form onSubmit={onSubmit}>
-      <input 
-      placeholder="UserName" 
-      value={username} 
-      onChange={(e)=>setUsername(e.target.value)}>
-
-      </input>
-
-      <br/>
-      <input 
-      placeholder="Password" 
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      >
-
-      </input><br/>
-
-
-      <button type="submit">
-        login
-      </button>
-
-     </form>
-
+    <button onClick={increment}>Click</button>
+    <button onClick={() => setCount1(count1 + 1)}>Click1</button>
     </div>
   );
 }
