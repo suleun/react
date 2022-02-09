@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from "react";
-import Counter from './components/Counter'
+import React from "react";
 
 function App() {
 
-  const [condition, setCondition] = useState(false);
+  const movies = [
+    {title : 'sosoeueun', year:2021},
+    {title : 'sosoeueun1', year:2022},
+    {title : 'sosoeueun2', year:2023}
+  ]
 
-  const toggle = () =>{
-    setCondition(!condition);
-  }
-
-  useEffect(()=>{
-    console.log(condition);
-  }, [condition])
-
-  const renderCondition = condition
-  ? 'True'
-  : 'False'
-
+  const renderMovies = movies.map(movie =>{
+    return (
+      <div className="movie" key={movie.title}>
+        <div className="movie-title">{movie.title}</div>
+        <div className="novie-year">{movie.year}</div>
+      </div>
+    );
+  })
 
   return (
     <div className="App">
-      <h1>ggg</h1>
-      <div>
-        {renderCondition}
-      </div>
+      <h1>Movie list</h1>
+    
+    {renderMovies}
+
       
-      <button onClick={toggle}>Toggle</button>
     </div>
   );
 }
