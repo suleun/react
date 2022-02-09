@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Counter from './components/Counter'
 
 function App() {
+
+  const [buttonName, setButtonName] = useState('클릭');
+
+  const clickButton = () =>{
+    setButtonName('click');
+  }
 
   return (
     <div className="App">
     <h1>ggg</h1>
       
-    <Counter/><Counter/><Counter/>
+    <Counter click="click1"/>
+
+    <Counter click={buttonName}/>
+
+    <Counter/>
+
+    <button onClick={clickButton}>Click</button>
 
     </div>
   );
